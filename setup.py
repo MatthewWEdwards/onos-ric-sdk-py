@@ -17,9 +17,8 @@ def parse_requirements(filename):
     requirements = []
     for line in open(filename):
         if line and not line.startswith("#"):
-            requirements.append(line)
+            requirements.append(line.strip())
     return requirements
-
 
 setup(
     name="onos-ric-sdk-python",

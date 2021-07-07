@@ -91,6 +91,8 @@ class SDLClient(aiomsa.abc.SDLClient):
                 if event.type == EventType.ADDED or event.type == EventType.NONE:
                     e2_node_id = event.object.relation.tgt_entity_id
                     get_response = await client.get(id=e2_node_id)
+                    if "onos.topo.E2Node" not in get_response.object.aspects:
+                        continue
                     aspects = get_response.object.aspects["onos.topo.E2Node"].value
 
                     ran_functions = []
